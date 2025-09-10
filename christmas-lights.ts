@@ -3,4 +3,7 @@ export class ChristmasLight {
     public turnOn(): void {
         this.status = true;
     }
+    public turnOff(): void {
+        this.status = false;
+    }
 }
