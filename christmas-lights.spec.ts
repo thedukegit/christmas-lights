@@ -4,23 +4,10 @@ describe('christmas-lights', () => {
     let christmasLightGrid: ChristmasLightGrid;
     beforeEach(() => {
         christmasLightGrid = new ChristmasLightGrid();
-    })
-    describe('one light', () => {
-        it('should turn off a single christmas light', () => {
-            christmasLightGrid.turnOff();
-            expect(christmasLightGrid.status).toBe(false);
-        })
-
-        it('should toggle a single christmas light', () => {
-            christmasLightGrid.toggle();
-            expect(christmasLightGrid.status).toBe(true);
-            christmasLightGrid.toggle();
-            expect(christmasLightGrid.status).toBe(false);
-        })
-    })
+    });
 
     describe('array of lights', () => {
-        it('should turn on an array of two lights', () => {
+        it('should turn on and off array of two lights', () => {
             // first check if they are off
             expect(christmasLightGrid.grid[0]).toBe(0);
             expect(christmasLightGrid.grid[1]).toBe(0);
@@ -32,6 +19,36 @@ describe('christmas-lights', () => {
             // then check if they are on
             expect(christmasLightGrid.grid[0]).toBe(1);
             expect(christmasLightGrid.grid[1]).toBe(1);
+
+            // then turn off
+            christmasLightGrid.turnOff(0);
+            christmasLightGrid.turnOff(1);
+
+            // then check if they are off
+            expect(christmasLightGrid.grid[0]).toBe(0);
+            expect(christmasLightGrid.grid[1]).toBe(0);
+        });
+
+        it('should toggle array of two lights', () => {
+            // first check if they are off
+            expect(christmasLightGrid.grid[0]).toBe(0);
+            expect(christmasLightGrid.grid[1]).toBe(0);
+
+            // then toggle
+            christmasLightGrid.toggle(0);
+            christmasLightGrid.toggle(1);
+
+            // then check if they are on
+            expect(christmasLightGrid.grid[0]).toBe(1);
+            expect(christmasLightGrid.grid[1]).toBe(1);
+
+            // then turn off
+            christmasLightGrid.toggle(0);
+            christmasLightGrid.toggle(1);
+
+            // then check if they are off
+            expect(christmasLightGrid.grid[0]).toBe(0);
+            expect(christmasLightGrid.grid[1]).toBe(0);
         });
     });
 });
