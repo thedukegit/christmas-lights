@@ -12,4 +12,12 @@ describe('christmas-lights', () => {
         christmasLight.turnOff();
         expect(christmasLight.status).toBe(false);
     })
+
+    it('should toggle a single christmas light', ()=>{
+        const christmasLight = new ChristmasLight();
+        christmasLight.toggle();
+        expect(christmasLight.status).toBe(true);
+        christmasLight.toggle();
+        expect(christmasLight.status).toBe(false);
+    })
 })

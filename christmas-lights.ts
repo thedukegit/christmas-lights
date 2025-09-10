@@ -6,4 +6,8 @@ export class ChristmasLight {
     public turnOff(): void {
         this.status = false;
     }
+
+    public toggle(): void {
+        this.status = !this.status;
+    }
 }
