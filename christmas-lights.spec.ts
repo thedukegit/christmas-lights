@@ -1,5 +1,19 @@
 import {ChristmasLightGrid} from "./christmas-lights";
 
+function isTurnedOff(christmasLightGrid: ChristmasLightGrid) {
+    expect(christmasLightGrid.grid[0][0]).toBe(0);
+    expect(christmasLightGrid.grid[0][1]).toBe(0);
+    expect(christmasLightGrid.grid[1][0]).toBe(0);
+    expect(christmasLightGrid.grid[1][1]).toBe(0);
+}
+
+function isTurnedOn(christmasLightGrid: ChristmasLightGrid) {
+    expect(christmasLightGrid.grid[0][0]).toBe(1);
+    expect(christmasLightGrid.grid[0][1]).toBe(1);
+    expect(christmasLightGrid.grid[1][0]).toBe(1);
+    expect(christmasLightGrid.grid[1][1]).toBe(1);
+}
+
 describe('christmas-lights', () => {
     let christmasLightGrid: ChristmasLightGrid;
     beforeEach(() => {
@@ -8,10 +22,7 @@ describe('christmas-lights', () => {
 
     describe('grid of lights', () => {
         it('should have a grid of lights that are off by default', () => {
-            expect(christmasLightGrid.grid[0][0]).toBe(0);
-            expect(christmasLightGrid.grid[0][1]).toBe(0);
-            expect(christmasLightGrid.grid[1][0]).toBe(0);
-            expect(christmasLightGrid.grid[1][1]).toBe(0);
+            isTurnedOff(christmasLightGrid);
         })
         it('should turn on and off a grid of lights', () => {
             // turn on
@@ -21,10 +32,7 @@ describe('christmas-lights', () => {
             christmasLightGrid.turnOn(1, 1);
 
             // then check if they are on
-            expect(christmasLightGrid.grid[0][0]).toBe(1);
-            expect(christmasLightGrid.grid[0][1]).toBe(1);
-            expect(christmasLightGrid.grid[1][0]).toBe(1);
-            expect(christmasLightGrid.grid[1][1]).toBe(1);
+            isTurnedOn(christmasLightGrid);
 
             // turn off
             christmasLightGrid.turnOff(0, 0);
@@ -33,10 +41,7 @@ describe('christmas-lights', () => {
             christmasLightGrid.turnOff(1, 1);
 
             // then check if they are off
-            expect(christmasLightGrid.grid[0][0]).toBe(0);
-            expect(christmasLightGrid.grid[0][1]).toBe(0);
-            expect(christmasLightGrid.grid[1][0]).toBe(0);
-            expect(christmasLightGrid.grid[1][1]).toBe(0);
+            isTurnedOff(christmasLightGrid);
         })
 
         it('should toggle a grid of lights', () => {
@@ -47,10 +52,7 @@ describe('christmas-lights', () => {
             christmasLightGrid.toggle(1, 1);
 
             // then check if they are toggled
-            expect(christmasLightGrid.grid[0][0]).toBe(1);
-            expect(christmasLightGrid.grid[0][1]).toBe(1);
-            expect(christmasLightGrid.grid[1][0]).toBe(1);
-            expect(christmasLightGrid.grid[1][1]).toBe(1);
+            isTurnedOn(christmasLightGrid);
 
             // toggle again
             christmasLightGrid.toggle(0, 0);
@@ -60,10 +62,7 @@ describe('christmas-lights', () => {
 
 
             // then check if they are toggled
-            expect(christmasLightGrid.grid[0][0]).toBe(0);
-            expect(christmasLightGrid.grid[0][1]).toBe(0);
-            expect(christmasLightGrid.grid[1][0]).toBe(0);
-            expect(christmasLightGrid.grid[1][1]).toBe(0);
+            isTurnedOff(christmasLightGrid);
         });
     })
 });
