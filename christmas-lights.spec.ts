@@ -16,11 +16,12 @@ function isTurnedOn(christmasLightGrid: ChristmasLightGrid) {
 
 describe('christmas-lights', () => {
     let christmasLightGrid: ChristmasLightGrid;
-    beforeEach(() => {
-        christmasLightGrid = new ChristmasLightGrid(2, 2);
-    });
+
 
     describe('grid of lights', () => {
+        beforeEach(() => {
+            christmasLightGrid = new ChristmasLightGrid(2, 2);
+        });
         it('should have a grid of lights that are off by default', () => {
             isTurnedOff(christmasLightGrid);
         })
@@ -64,5 +65,65 @@ describe('christmas-lights', () => {
             // then check if they are toggled
             isTurnedOff(christmasLightGrid);
         });
+    })
+
+    describe('coordinates', () => {
+        beforeEach(() => {
+            christmasLightGrid = new ChristmasLightGrid(4, 4);
+        })
+        it('should turn on and off a section of the grid by a coordinate range', () => {
+            // turn on
+            christmasLightGrid.turnOnByCoordinates({x: 1, y: 1}, {x: 2, y: 2});
+            // first row
+            expect(christmasLightGrid.grid[0][0]).toBe(0);
+            expect(christmasLightGrid.grid[0][1]).toBe(0);
+            expect(christmasLightGrid.grid[0][2]).toBe(0);
+            expect(christmasLightGrid.grid[0][3]).toBe(0);
+
+            // second row
+            expect(christmasLightGrid.grid[1][0]).toBe(0);
+            expect(christmasLightGrid.grid[1][1]).toBe(1);
+            expect(christmasLightGrid.grid[1][2]).toBe(1);
+            expect(christmasLightGrid.grid[1][3]).toBe(0);
+
+            // third row
+            expect(christmasLightGrid.grid[2][0]).toBe(0);
+            expect(christmasLightGrid.grid[2][1]).toBe(1);
+            expect(christmasLightGrid.grid[2][2]).toBe(1);
+            expect(christmasLightGrid.grid[2][3]).toBe(0);
+
+            // fourth row
+            expect(christmasLightGrid.grid[3][0]).toBe(0);
+            expect(christmasLightGrid.grid[3][1]).toBe(0);
+            expect(christmasLightGrid.grid[3][2]).toBe(0);
+            expect(christmasLightGrid.grid[3][3]).toBe(0);
+
+            // turn off
+            christmasLightGrid.turnOffByCoordinates({x: 1, y: 1}, {x: 2, y: 2});
+            // first row
+            expect(christmasLightGrid.grid[0][0]).toBe(0);
+            expect(christmasLightGrid.grid[0][1]).toBe(0);
+            expect(christmasLightGrid.grid[0][2]).toBe(0);
+            expect(christmasLightGrid.grid[0][3]).toBe(0);
+
+            // second row
+            expect(christmasLightGrid.grid[1][0]).toBe(0);
+            expect(christmasLightGrid.grid[1][1]).toBe(0);
+            expect(christmasLightGrid.grid[1][2]).toBe(0);
+            expect(christmasLightGrid.grid[1][3]).toBe(0);
+
+            // third row
+            expect(christmasLightGrid.grid[2][0]).toBe(0);
+            expect(christmasLightGrid.grid[2][1]).toBe(0);
+            expect(christmasLightGrid.grid[2][2]).toBe(0);
+            expect(christmasLightGrid.grid[2][3]).toBe(0);
+
+            // fourth row
+            expect(christmasLightGrid.grid[3][0]).toBe(0);
+            expect(christmasLightGrid.grid[3][1]).toBe(0);
+            expect(christmasLightGrid.grid[3][2]).toBe(0);
+            expect(christmasLightGrid.grid[3][3]).toBe(0);
+
+        })
     })
 });

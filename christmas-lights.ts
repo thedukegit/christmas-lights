@@ -1,3 +1,8 @@
+export interface Coordinates {
+    x: number;
+    y: number;
+}
+
 export class ChristmasLightGrid {
     public grid: Array<Array<number>> = []; //
 
@@ -20,5 +25,21 @@ export class ChristmasLightGrid {
 
     public toggle(x: number, y: number): void {
         this.grid[x][y] = this.grid[x][y] === 0 ? 1 : 0;
+    }
+
+    public turnOnByCoordinates(start: Coordinates, end: Coordinates): void {
+        for (let i = start.x; i <= end.x; i++) {
+            for (let j = start.y; j <= end.y; j++) {
+                this.turnOn(i, j);
+            }
+        }
+    }
+
+    public turnOffByCoordinates(start: Coordinates, end: Coordinates): void {
+        for (let i = start.x; i <= end.x; i++) {
+            for (let j = start.y; j <= end.y; j++) {
+                this.turnOff(i, j);
+            }
+        }
     }
 }

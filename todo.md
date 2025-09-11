@@ -7,6 +7,7 @@
 [x] turn on a grid of lights
 [x] turn off a grid of lights
 [x] toggle a grid of lights
-[] turn on a grid by giving a coordinate range
-[] turn off a grid by giving a coordinate range
+[x] turn on a grid by giving a coordinate range
+[x] turn off a grid by giving a coordinate range
 [] toggle a grid by giving a coordinate range
+[] count how many lights are on in a grid
