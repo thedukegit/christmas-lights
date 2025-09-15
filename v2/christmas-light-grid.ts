@@ -8,14 +8,16 @@ export class ChristmasLightGrid {
                 this.grid[i][j] = 0;
             }
         }
-        console.log(this.grid);
+        console.log('initialized: ', this.grid);
     }
 
     public turnOn(): void {
-        this.grid[0][0] = 1;
-        this.grid[0][1] = 1;
-        this.grid[1][0] = 1;
-        this.grid[1][1] = 1;
-        console.log(this.grid);
+        this.grid.forEach((row, x) => {
+            console.log('row: ', row);
+            row.forEach((cell, y) => {
+                this.grid[x][y] = 1;
+            })
+        })
+        console.log('turned on: ', this.grid);
     }
 }
