@@ -1,3 +1,8 @@
+export interface Coordinates {
+    x: number;
+    y: number;
+}
+
 export class ChristmasLightGrid {
     public grid: number[][] = [];
 
@@ -11,13 +16,12 @@ export class ChristmasLightGrid {
         console.log('initialized: ', this.grid);
     }
 
-    public turnOn(): void {
-        this.grid.forEach((row, x) => {
-            console.log('row: ', row);
-            row.forEach((cell, y) => {
-                this.grid[x][y] = 1;
-            })
-        })
+    public turnOn(start: Coordinates, end: Coordinates): void {
+        for (let i = start.y; i <= end.y; i++) {
+            for (let j = start.x; j <= end.x; j++) {
+                this.grid[i][j] = 1;
+            }
+        }
         console.log('turned on: ', this.grid);
     }
 }
